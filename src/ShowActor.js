@@ -40,6 +40,7 @@ class ShowActor {
       menuItem.className = "menuitem";
       menuItem.textContent = el.name;
       menuItemContainer.appendChild(menuItem);
+      menuItem.addEventListener("click", (e) => this.changeContent(e, el));
 
     })
 
@@ -60,7 +61,7 @@ class ShowActor {
     });
 
     const showImg = document.createElement("img");
-    showImg.id = "ShowImg";
+    showImg.id = "showImg";
     showImg.src = "../assets/ninja.png";
     document.querySelector("#imagecon").appendChild(showImg);
 
@@ -70,6 +71,22 @@ class ShowActor {
     document.body.appendChild(footer);
 
   }//END constructor
+
+  changeContent(e, data) {
+
+    let mHeadline = document.querySelector("#headline");
+    mHeadline.textContent = data.name;
+
+    const imageSrc = data.img;
+    const img = "../assets/" + imageSrc;
+
+    let mImg = document.querySelector('#showImg');
+    mImg.src = img;
+
+
+    let mContent = document.querySelector("#content");
+    mContent.textContent = data.text
+  }
 
 }
 
